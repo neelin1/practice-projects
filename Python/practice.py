@@ -143,5 +143,11 @@
 # top = int((i - 1) / 2) + 1
 # print(bottom, top)
 
-for i in range(1, 2*3):
+# for i in range(1, 2*3):
+#     print(i)
+
+for i in range(len("aaa")):
     print(i)
+
+L = [''] * 5
+# makes alist of empty strings of length 5
