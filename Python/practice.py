@@ -146,8 +146,19 @@
 # for i in range(1, 2*3):
 #     print(i)
 
-for i in range(len("aaa")):
-    print(i)
+# for i in range(len("aaa")):
+#     print(i)
 
-L = [''] * 5
+# L = [''] * 5
 # makes alist of empty strings of length 5
+
+# def test_func(char: str):
+#     try:
+#         int(char)
+#         return True
+#     except:
+#         return False
+
+
+# print(test_func("s"))
+print("test"[0:0])
