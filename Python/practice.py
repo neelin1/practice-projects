@@ -161,4 +161,17 @@
 
 
 # print(test_func("s"))
-print("test"[0:0])
+# print("test"[:3])
+# s = "aaa"
+# p = "bbbb"
+# table = [[False] * (len(s) + 1) for _ in range(len(p) + 1)]
+# print(table)
+
+# table[-1][-1] = True
+
+# print(table)
+# for i in range(2, 6):
+#     print(i)
+
+height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
+print(height[-1])
