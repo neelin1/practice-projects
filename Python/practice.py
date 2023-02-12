@@ -170,8 +170,50 @@
 # table[-1][-1] = True
 
 # print(table)
-# for i in range(2, 6):
-#     print(i)
+
 
 height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
 print(height[-1])
+
+
+for i in range(0):
+    print(i)
+# neg = list(filter(lambda x: x < 0, nums))
+#     zero = list(filter(lambda x: x == 0, nums))
+#     pos = list(filter(lambda x: x > 0, nums))
+# print(height)
+# height[0] = 0
+# print(height)
+
+
+# def getNumberOfHiddenSequences(differences, lower, upper):
+#     given_range = upper - lower + 1
+#     print(given_range, "g range")
+#     minimum = 0
+#     maximum = 0
+#     current = 0
+#     for i in differences:
+#         current += i
+#         minimum = min(minimum, current)
+#         print(minimum, "min")
+#         maximum = max(maximum, current)
+#         print(maximum, "max")
+#     needed_range = maximum - minimum + 1
+#     if (given_range >= needed_range):
+#         return (given_range - needed_range + 1)
+#     else:
+#         return 0
+
+
+# print(getNumberOfHiddenSequences([1, -3, 4], 1, 6))
+
+# lists = [1, 2, 3, 4]
+# print(lists)
+# lists.sort(reverse=True)
+# print(lists)
+
+# print(1e9 + 7)
+
+print("test"[0:len("test")])
+
+print("one,two".split(','))
