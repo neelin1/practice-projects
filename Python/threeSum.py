@@ -19,44 +19,45 @@ class Solution:
                 else:
                     neg.update({num: 1})
 
-        # create empty list
-        triplet_list = []
+        # create a set of all possible positive pairs as tuples
+        pos_pairs = set()
 
-        # create a list of all possible positive pairs
         for num_x, duplicates_x in pos.items():
             if duplicates_x > 1:
-                if (-num_x * 2) in neg:
-                    triplet_list.append([num_x, num_x, (-num_x * 2)])
-            if zeros > 0 and -(num_x) in neg:
-                triplet_list.append([num_x, 0, -(num_x)])
+                pos_pairs.add((num_x, num_x))
+            if zeros > 0:
+                pos_pairs.add((num_x, 0))
             for num_y, duplicates_y in pos.items():
-                if num_y != num_x and -(num_x + num_y) in neg:
-                    triplet_list.append([num_x, num_y, -(num_x + num_y)])
+                if num_y != num_x and (not (num_y, num_x) in pos_pairs):
+                    pos_pairs.add((num_x, num_y))
 
         # create a list of all possible negative pairs
+        neg_pairs = set()
+
+        for num_x, duplicates_x in neg.items():
+            if duplicates_x > 1:
+                neg_pairs.add((num_x, num_x))
+            if zeros > 0:
+                neg_pairs.add((num_x, 0))
+            for num_y, duplicates_y in neg.items():
+                if num_y != num_x and (not (num_y, num_x) in neg_pairs):
+                    neg_pairs.add((num_x, num_y))
+
+        # create empty list for triplets
+        triplet_list = []
 
         # if 3 or more 0s, add 0,0,0 to set of negative numbers
         if zeros >= 3:
             triplet_list.append([0, 0, 0])
 
         # check if each pair of positive numbers has a corresponding negative (including a pair of the same number if it occurs more than once)
-        for num_x, duplicates_x in pos.items():
-            if duplicates_x > 1:
-                if (-num_x * 2) in neg:
-                    triplet_list.append([num_x, num_x, (-num_x * 2)])
-            if zeros > 0 and -(num_x) in neg:
-                triplet_list.append([num_x, 0, -(num_x)])
-            for num_y, duplicates_y in pos.items():
-                if num_y != num_x and -(num_x + num_y) in neg:
-                    triplet_list.append([num_x, num_y, -(num_x + num_y)])
+        for p_1, p_2 in pos_pairs:
+            if -(p_1 + p_2) in neg:
+                triplet_list.append([p_1, p_2, -(p_1 + p_2)])
 
         # check if each pair negative numbers has a corresponding positive (including a pair of the same number if it occurs more than once)
-        for num_x, duplicates_x in neg.items():
-            if duplicates_x > 1:
-                if -(num_x * 2) in pos:
-                    triplet_list.append([num_x, num_x, -(num_x * 2)])
-            for num_y, duplicates_y in neg.items():
-                if num_y != num_x and -(num_x + num_y) in pos:
-                    triplet_list.append([num_x, num_y, -(num_x + num_y)])
+        for n_1, n_2 in neg_pairs:
+            if -(n_1 + n_2) in pos and (n_1 != 0) and (n_2 != 0):
+                triplet_list.append([n_1, n_2, -(n_1 + n_2)])
 
         return triplet_list
